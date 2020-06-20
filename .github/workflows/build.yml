@@ -16,13 +16,14 @@ jobs:
               with:
                 java-version: '11'
 
+            - name: Setup Maven
+              run: |
+              echo "<settings><activeProfiles><activeProfile>github</activeProfile></activeProfiles><profiles><profile><id>github</id><repositories><repository><id>central</id><url>https://repo1.maven.org/maven2</url><releases><enabled>true</enabled></releases><snapshots><enabled>true</enabled></snapshots></repository><repository><id>github</id><name>Jeffrey Riggle Apache Maven Packages</name><url>https://maven.pkg.github.com/jeffreyriggle/java-core</url></repository></repositories></profile></profiles><servers><server><id>github</id><username>JeffreyRiggle</username><password>\${env.TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
+
             - name: Build with Maven
               run: mvn test
             
             - name: Deploy
               env:
                 TOKEN: ${{ secrets.GITHUBTOKEN }}
-              run: |
-                echo "<settings><servers><server><id>github</id><username>JeffreyRiggle</username><password>\${env.TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
-                REPO="gh::default::https://maven.pkg.github.com/${GITHUB_REPOSITORY}"
-                mvn deploy -Drevision="${GITHUB_RUN_NUMBER}"
+              run: mvn deploy -Drevision="${GITHUB_RUN_NUMBER}"
