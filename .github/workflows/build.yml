@@ -19,6 +19,7 @@ jobs:
             - name: Setup Maven
               env:
                 TOKEN: ${{ secrets.GITHUBTOKEN }}
+                USERNAME: JeffreyRiggle
               run: |
                 envsubst < settings.tmpl > ~/.m2/settings.xml
                 cat ~/.m2/settings.xml
