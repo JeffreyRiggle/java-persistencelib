@@ -19,7 +19,6 @@ jobs:
             - name: Setup Maven
               env:
                 TOKEN: ${{ secrets.GITHUBTOKEN }}
-                USER_NAME: JeffreyRiggle
               run: |
                 envsubst < settings.tmpl > ~/.m2/settings.xml
 
@@ -27,6 +26,4 @@ jobs:
               run: mvn test
             
             - name: Deploy
-              env:
-                TOKEN: ${{ secrets.GITHUBTOKEN }}
               run: mvn deploy -Drevision="${GITHUB_RUN_NUMBER}"
