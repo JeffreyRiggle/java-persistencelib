@@ -41,21 +41,15 @@ public class XmlConfigurationObject implements PersistXml, IXmlConfigurationObje
 	 * 
 	 * @param name The name of the configuration object.
 	 * @param value The value for the configuration object.
-	 * @throws TransformerConfigurationException
-	 * @throws ParserConfigurationException
+	 * @throws TransformerConfigurationException Throws a Transformer configuration execption when transform fails
+	 * @throws ParserConfigurationException Throws a ParserConfigurationExecption when content cannot be parsed
 	 */
 	public <T>XmlConfigurationObject(String name, T value) throws TransformerConfigurationException, ParserConfigurationException {
 		this(name, new ArrayList<ConfigurationProperty>(), new ArrayList<PersistXml>(), value);
 	}
 	
 	/**
-	 * 
-	 * @param name The name of the configuration object.
-	 * @param properties List of @see ConfigurationProperty assoicated with this configuration object.
-	 * @param children List of @see PersistXml associated with this configuration object.
-	 * @param value The value for the configuration object.
-	 * @throws TransformerConfigurationException
-	 * @throws ParserConfigurationException
+	 * {@inheritDoc}
 	 */
 	public <T>XmlConfigurationObject(String name, List<ConfigurationProperty> properties,
 			List<PersistXml> children, T value) throws TransformerConfigurationException, ParserConfigurationException {

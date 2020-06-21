@@ -29,19 +29,17 @@ public class XmlConfigurationManager implements IPersistenceManager{
 	/**
 	 * 
 	 * @param location The location of the xml file.
-	 * @throws TransformerConfigurationException
-	 * @throws ParserConfigurationException
-	 * @throws SAXException
-	 * @throws IOException
+	 * @throws IOException Throws an IOException when loading the file fails
+	 * @throws SAXException Throws a SAXException
+	 * @throws ParserConfigurationException Throws a ParserConfigurationExecption when content cannot be parsed
+	 * @throws TransformerConfigurationException Throws a Transformer configuration execption when transform fails
 	 */
 	public XmlConfigurationManager(String location) throws TransformerConfigurationException, ParserConfigurationException, SAXException, IOException {
 		this(new XmlManager(location), new ArrayList<PersistXml>());
 	}
 	
 	/**
-	 * 
-	 * @param manager The @see XmlManager to read and write to disk.
-	 * @param config List of @see XmlConfigurationObjects to be saved and read.
+	 * {@inheritDoc}
 	 */
 	public XmlConfigurationManager(XmlManager manager, List<PersistXml> config) {
 		xmlManager = manager;
@@ -49,47 +47,42 @@ public class XmlConfigurationManager implements IPersistenceManager{
 	}
 	
 	/**
-	 * 
-	 * @return A list of @see PersistXml assoicated with this configuration object.
+	 * {@inheritDoc}
 	 */
 	public List<PersistXml> configurationObjects() {
 		return configurationObjects;
 	}
 	
 	/**
-	 * 
-	 * @param configObject The @see PersistXml to add to the file.
+	 * {@inheritDoc}
 	 */
 	public void addConfigurationObject(PersistXml configObject) {
 		configurationObjects.add(configObject);
 	}
 	
 	/**
-	 * 
-	 * @param configObjects List of @see PersistXml to be added to file.
+	 * {@inheritDoc}
 	 */
 	public void addConfigurationObjects(List<PersistXml> configObjects) {
 		configurationObjects.addAll(configObjects);
 	}
 	
 	/**
-	 * 
-	 * @param configObject The @see PersistXml to remove from this file.
+	 * {@inheritDoc}
 	 */
 	public void removeConfigurationObject(PersistXml configObject) {
 		configurationObjects.remove(configObject);
 	}
 	
 	/**
-	 * 
-	 * @param configObjects List of @see PersistXml to remove from this file.
+	 * {@inheritDoc}
 	 */
 	public void removeConfigurationObjects(List<PersistXml> configObjects) {
 		configurationObjects.removeAll(configObjects);
 	}
 	
 	/**
-	 * Remove all @see PersistXml from this file.
+	 * {@inheritDoc}
 	 */
 	public void clearConfigurationObjects() {
 		configurationObjects.clear();
