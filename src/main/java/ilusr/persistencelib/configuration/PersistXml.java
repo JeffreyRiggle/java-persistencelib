@@ -13,13 +13,13 @@ import ilusr.core.datamanager.xml.XmlGenerator;
 public interface PersistXml {
 	/**
 	 * 
-	 * @param generator A @see XmlGenerator to save xml objects to.
-	 * @return The @see Element created in the @see XmlGenerator.
+	 * @param generator A XmlGenerator to save xml objects to.
+	 * @return The Element created in the XmlGenerator.
 	 */
 	Element persist(XmlGenerator generator);
 	/**
 	 * 
-	 * @param xmlObject The @see Element to load into memory.
+	 * @param xmlObject The Element to load into memory.
 	 */
 	void load(Element xmlObject);
 }
