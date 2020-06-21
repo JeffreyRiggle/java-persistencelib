@@ -21,6 +21,7 @@ jobs:
                 TOKEN: ${{ secrets.GITHUBTOKEN }}
               run: |
                 envsubst < settings.tmpl > ~/.m2/settings.xml
+                cat ~/.m2/settings.xml
 
             - name: Build with Maven
               run: mvn test
