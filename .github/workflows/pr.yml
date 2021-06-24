@@ -1,10 +1,10 @@
-name: Build
+name: PR Build
 
 on: [pull_request]
 
 jobs:
     build:
-        name: Build
+        name: PR Build
         runs-on: ubuntu-latest
 
         steps:
@@ -15,6 +15,13 @@ jobs:
               uses: actions/setup-java@v1
               with:
                 java-version: '11'
+
+            - name: Setup Maven
+              env:
+                TOKEN: ${{ secrets.GITHUBTOKEN }}
+                USERNAME: JeffreyRiggle
+              run: |
+                envsubst < settings.tmpl > ~/.m2/settings.xml
 
             - name: Build with Maven
               run: mvn test
