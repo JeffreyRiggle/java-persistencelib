@@ -7,7 +7,7 @@
   <description>A library for managing persistence</description>
   <dependencies>
   	<dependency>
-  		<groupId>com.ilusr.Core</groupId>
+  		<groupId>com.ilusr.core</groupId>
   		<artifactId>core</artifactId>
   		<version>2.1.9</version>
   	</dependency>
